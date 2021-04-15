@@ -1,23 +1,281 @@
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"><mat-card >
+  <mat-card-header>
+  
+    <mat-card-title>Get the recipes depending on the Carbohydrates</mat-card-title>
 
-<div style="padding: 300px;">
+  </mat-card-header>
+   <mat-card-content>
+   
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  
+    <div>
+    <label>
+      Mainimum Carbohydrates:
+   <select formControlName="mincarbs" class="form-control">
+                <option disabled>Select mincarbs </option>
+                <option>Choose mincarbs</option>
+                <option *ngFor="let min of minlist">{{min}}</option>
+            </select>
+    </label>
+    <div *ngIf="myForm.get('mincarbs').invalid && (myForm.get('mincarbs').dirty || myForm.get('mincarbs').touched)">
+      Please provide a mincarbs.
+    </div>
+  </div>
+
+    <div>
+    <label>
+      Maximum Carbohydrates:
+   <select formControlName="maxcarbs" class="form-control">
+                <option disabled>Select maxcarbs </option>
+                <option>Choose maxcarbs</option>
+                <option *ngFor="let num of maxlist">{{num}}</option>
+            </select>
+    </label>
+    <div *ngIf="myForm.get('maxcarbs').invalid && (myForm.get('maxcarbs').dirty || myForm.get('maxcarbs').touched)">
+      Please provide a maxcarbs.
+    </div>
+  </div>
+  
+
+        
+
+           
+  
+   
+
+  <button type="submit" [disabled]="myForm.invalid">Get Your Recipes</button>
+</form>
+
+  </mat-card-content>
+ 
+</mat-card>
+
+</div>
+    <div class="col-md-4">
+
+
+    <mat-card >
+  <mat-card-header>
+  
+    <mat-card-title>Get the recipes depending on the Fats</mat-card-title>
+
+  </mat-card-header>
+   <mat-card-content>
+   
+<form [formGroup]="myFormF" (ngSubmit)="onSubmitF(myFormF)">
+  
+    <div>
+    <label>
+      Mainimum Fats:
+   <select formControlName="minfats" class="form-control">
+                <option disabled>Select minfats </option>
+                <option>Choose minfats</option>
+                <option *ngFor="let minF of minfatlist">{{minF}}</option>
+            </select>
+    </label>
+    <div *ngIf="myFormF.get('minfats').invalid && (myFormF.get('minfats').dirty || myFormF.get('minfats').touched)">
+      Please provide a minfats.
+    </div>
+  </div>
+
+    <div>
+    <label>
+      Maximum Fats:
+   <select formControlName="maxfats" class="form-control">
+                <option disabled>Select maxfats </option>
+                <option>Choose maxfats</option>
+                <option *ngFor="let maxF of maxfatlist">{{maxF}}</option>
+            </select>
+    </label>
+    <div *ngIf="myFormF.get('maxfats').invalid && (myFormF.get('maxfats').dirty || myFormF.get('maxfats').touched)">
+      Please provide a maxfats.
+    </div>
+  </div>
+  
+
+        
+
+           
+  
+   
+
+  <button type="submit" [disabled]="myFormF.invalid">Get Your Recipes</button>
+</form>
+
+  </mat-card-content>
+ 
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="col-md-4">
+    <mat-card >
+  <mat-card-header>
+    
+    <mat-card-title>Get the recipes depending on the Calories</mat-card-title>
+
+  </mat-card-header>
+   <mat-card-content>
+   
+<form [formGroup]="myFormC" (ngSubmit)="onSubmitC(myFormC)">
+  
+    <div>
+    <label>
+      Mainimum Calories:
+   <select formControlName="mincal" class="form-control">
+                <option disabled>Select mincal </option>
+                <option>Choose mincal</option>
+                <option *ngFor="let minC of mincallist">{{minC}}</option>
+            </select>
+    </label>
+    <div *ngIf="myFormC.get('mincal').invalid && (myFormC.get('mincal').dirty || myFormC.get('mincal').touched)">
+      Please provide a mincalories.
+    </div>
+  </div>
+
+    <div>
+    <label>
+      Maximum Calories:
+   <select formControlName="maxcal" class="form-control">
+                <option disabled>Select maxcal </option>
+                <option>Choose maxcal</option>
+                <option *ngFor="let maxC of maxcallist">{{maxC}}</option>
+            </select>
+    </label>
+    <div *ngIf="myFormC.get('maxcal').invalid && (myFormC.get('maxcal').dirty || myFormC.get('maxcal').touched)">
+      Please provide a maxCalories.
+    </div>
+  </div>
+  
+
+        
+
+           
+  
+   
+
+  <button type="submit" [disabled]="myFormC.invalid">Get Your Recipes</button>
+</form>
+
+  </mat-card-content>
+ 
+</mat-card>
+
+
+</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+    
+<div  *ngIf="carbresults.length>0">
     
 
-    <mat-card *ngFor="let product of products" style="margin-top:10px;">
+    <mat-card *ngFor="let carb of carbresults" style="margin-top:10px;">
         <mat-card-header>
-            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-title>{{carb.title}}</mat-card-title>
            
         </mat-card-header>
         <mat-card-content>
             <p>
-                {{product.carbs}}
+                {{carb.carbs}}
             </p>
-            <img style="height:100%; width: 100%;" src="{{ product.image }}" />
+            <img style="height:100%; width: 100%;" src="{{ carb.image }}" />
         </mat-card-content>
         <mat-card-actions>
       <button mat-button> Buy product</button>
     </mat-card-actions>
     </mat-card>
 </div>
+
+
+
+
+
+    </div>
+    <div class="col-md-4">
+    
+
+    <div  *ngIf="fatresults.length>0">
+    
+
+    <mat-card *ngFor="let fat of fatresults" style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title>{{fat.title}}</mat-card-title>
+           
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{fat.carbs}}
+            </p>
+            <img style="height:100%; width: 100%;" src="{{ fat.image }}" />
+        </mat-card-content>
+        <mat-card-actions>
+      <button mat-button> Buy product</button>
+    </mat-card-actions>
+    </mat-card>
+</div>
+
+
+
+
+    </div>
+    <div class="col-md-4">
+
+
+    
+    <div  *ngIf="calresults.length>0">
+    
+
+    <mat-card *ngFor="let cal of calresults" style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title>{{cal.title}}</mat-card-title>
+           
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{cal.carbs}}
+            </p>
+            <img style="height:100%; width: 100%;" src="{{ cal.image }}" />
+        </mat-card-content>
+        <mat-card-actions>
+      <button mat-button> Buy product</button>
+    </mat-card-actions>
+    </mat-card>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 

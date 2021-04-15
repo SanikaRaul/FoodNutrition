@@ -14,7 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { GetfoodComponent } from './getfood/getfood.component';
@@ -37,7 +38,9 @@ import { GetfoodComponent } from './getfood/getfood.component';
   MatIconModule,
   MatCardModule,
   MatButtonModule,
-  MatProgressSpinnerModule 
+  MatProgressSpinnerModule,
+  FormsModule,
+  ReactiveFormsModule
     
   ],
   providers: [],

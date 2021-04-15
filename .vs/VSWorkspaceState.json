@@ -4,8 +4,10 @@
     "\\project",
     "\\project\\src",
     "\\project\\src\\app",
+    "\\project\\src\\app\\getfood",
+    "\\project\\src\\app\\services",
     "\\project\\src\\app\\sidenav"
   ],
-  "SelectedNode": "\\project\\src\\app\\app.module.ts",
+  "SelectedNode": "\\project\\src\\app\\getfood\\getfood.component.ts",
   "PreviewInSolutionExplorer": false
 }
